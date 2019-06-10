@@ -1,6 +1,6 @@
 language: go
 sudo: false
-go: 1.10.2
+go: 1.12.5
 env:
   global:
   - PATH=$HOME/gopath/bin:$HOME/bin:$PATH
@@ -11,10 +11,9 @@ env:
   - ARTIFACTS_CACHE_CONTROL='public, max-age=315360000'
   - ARTIFACTS_LOG_FORMAT=multiline
   - ARTIFACTS_DEBUG=1
+  - GO111MODULE=on
 before_install:
-- go get github.com/meatballhat/deppy
 - go get golang.org/x/tools/cmd/cover
-- deppy restore
 - go install -a -race std
 script:
 - make distclean all crossbuild

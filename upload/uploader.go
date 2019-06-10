@@ -8,9 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/dustin/go-humanize"
-	"github.com/mitchellh/goamz/s3"
+	"github.com/sirupsen/logrus"
 	"github.com/travis-ci/artifacts/artifact"
 	"github.com/travis-ci/artifacts/path"
 )
@@ -158,7 +157,7 @@ func (u *uploader) artifactFeederLoop(path *path.Path, artifacts chan *artifact.
 	}
 
 	artifactOpts := &artifact.Options{
-		Perm:        s3.ACL(u.Opts.Perm),
+		Perm:        u.Opts.Perm,
 		RepoSlug:    u.Opts.RepoSlug,
 		BuildNumber: u.Opts.BuildNumber,
 		BuildID:     u.Opts.BuildID,
